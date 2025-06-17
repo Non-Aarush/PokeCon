@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Fan-Vote</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">Pokemon Fan-Vote</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html" class='nav-link active'>Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">So What's Your Favourite Pokemon :D</h1>
+            <p class="hero-subtitle">Vote for your pokemon to win</p>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <section class="pokemon-gallery">
+        <div class="container">
+            <h2 class="section-title">Pokemon Collection</h2>
+            <div class="pokemon-grid" id="pokemonGrid">
+            </div>
+        </div>
+    </section>
+
+    <section class="vote-section">
+        <div class="container">
+            <div class="vote-card">
+                <h2 class="vote-title">Cast Your Vote</h2>
+                <form class="vote-form" id="voteForm">
+                    <div class="form-group">
+                        <label for="pokemonSelect">Select Pokemon:</label>
+                        <select id="pokemonSelect" class="pokemon-dropdown">
+                            <option value="">Choose your favorite Pokemon</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="voteReason">Drop reason for choosing this pokemon</label>
+                        <textarea id="voteReason" placeholder="Tell us why you love this Pokemon..." rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="vote-btn">Submit Vote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Made for HackClub ~ Not Affiliated With Pokemon ~ Aarush Sharma &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Pokemon Fan-Vote</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">Pokemon Fan-Vote</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html" class='nav-link'>Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="page-title">About Pokemon Fan-Vote</h1>
+            <p class="about-description">
+                Welcome to Pokemon Fan-Vote,this website is created by Aarush Sharma , a 17 y/o High School Student for the project Waffles.
+                So basically users can come here and see the different pokemons from the list and select their favourite one and then vote
+                for them :D , made by a hardcore pokemon fan.
+            </p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(0)">
+                        <span>How does the voting system work?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply select your favorite Pokemon from the list and tell us why you love them. </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Are all Pokemon generations included?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! I tried to include as many pokemons as i could and from different generations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>Can I vote multiple times?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes you can spam the votes , vote however many times you like.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Inspiration behind this?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I am very big pokemon fan as well as card collector , and i have a knack for waffles hence this project came into being. Check #waffles on slack.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="theme-section">
+        <div class="container">
+            <h2 class="section-title">COLOURRSSSSS!!!</h2>
+            <div class="theme-selector">
+                <p class="theme-description">Choose your favourite:</p>
+                <div class="color-options">
+                    <div class="color-option blue" onclick="changeTheme('blue')" title="Blue Theme"></div>
+                    <div class="color-option green" onclick="changeTheme('green')" title="Green Theme"></div>
+                    <div class="color-option yellow" onclick="changeTheme('yellow')" title="Yellow Theme"></div>
+                    <div class="color-option pink" onclick="changeTheme('pink')" title="Pink Theme"></div>
+                    <div class="color-option red" onclick="changeTheme('red')" title="Red Theme"></div>
+                    <div class="color-option purple" onclick="changeTheme('purple')" title="Purple Theme"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Made for HackClub ~ Not Affiliated With Pokemon ~ Aarush Sharma &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
