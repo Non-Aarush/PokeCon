@@ -1,4 +1,4 @@
-const pokemonData = [
+const pd = [
     { name: "Pikachu", type: "Electric", description: "The famous electric mouse Pokemon known worldwide.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" },
     { name: "Charizard", type: "Fire/Flying", description: "A powerful dragon-like Pokemon that breathes fire.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" },
     { name: "Blastoise", type: "Water", description: "A turtle Pokemon with powerful water cannons.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png" },
@@ -87,186 +87,144 @@ const pokemonData = [
     { name: "Gimmighoul", type: "Ghost", description: "A coin entity Pokemon that collects coins.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/999.png" }
 ];
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-function initializeApp() {
-    const currentPage = window.location.pathname;
-    
-    if (currentPage.includes('index.html') || currentPage === '/') {
-        populatePokemonGrid();
-        populateVoteDropdown();
-        setupVoteForm();
-    }
-    
-    if (currentPage.includes('about.html')) {
-        setupFAQToggle();
-        setupThemeSelector();
-    }
-    
-    const savedTheme = localStorage.getItem('pokemonSiteTheme') || 'blue';
-    applyTheme(savedTheme);
-}
-
-function populatePokemonGrid() {
-    const pokemonGrid = document.getElementById('pokemonGrid');
-    if (!pokemonGrid) return;
-    
-    pokemonGrid.innerHTML = '';
-    
-    pokemonData.forEach(pokemon => {
-        const pokemonCard = document.createElement('div');
-        pokemonCard.className = 'pokemon-card';
-        
-        pokemonCard.innerHTML = `
-            <img src="${pokemon.image}" alt="${pokemon.name}" class="pokemon-image" loading="lazy">
-            <h3 class="pokemon-name">${pokemon.name}</h3>
-            <div class="pokemon-info">
-                <div class="pokemon-type">Type: ${pokemon.type}</div>
-                <div class="pokemon-description">${pokemon.description}</div>
-            </div>
-        `;
-        
-        pokemonGrid.appendChild(pokemonCard);
-    });
-}
-
-function populateVoteDropdown() {
-    const pokemonSelect = document.getElementById('pokemonSelect');
-    if (!pokemonSelect) return;
-    
-    pokemonData.forEach(pokemon => {
-        const option = document.createElement('option');
-        option.value = pokemon.name;
-        option.textContent = pokemon.name;
-        pokemonSelect.appendChild(option);
-    });
-}
-
-function setupVoteForm() {
-    const voteForm = document.getElementById('voteForm');
-    if (!voteForm) return;
-    
-    voteForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const selectedPokemon = document.getElementById('pokemonSelect').value;
-        const voteReason = document.getElementById('voteReason').value;
-        
-        if (!selectedPokemon) {
-            alert('Please select a Pokemon!');
-            return;
-        }
-        
-        if (!voteReason.trim()) {
-            alert('Please tell us why you love this Pokemon!');
-            return;
-        }
-        
-        alert(`Thank you for voting for ${selectedPokemon}! Your reason: "${voteReason}"`);
-        
-        voteForm.reset();
-    });
-}
-
-
-function toggleFAQ(index) {
-    const faqItems = document.querySelectorAll('.faq-item');
-    const currentItem = faqItems[index];
-    
-    faqItems.forEach((item, i) => {
-        if (i !== index) {
-            item.classList.remove('active');
-        }
-    });
-    
-    
-    currentItem.classList.toggle('active');
-}
-
-
-function setupThemeSelector() {
-    const colorOptions = document.querySelectorAll('.color-option');
-    
-    colorOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const theme = this.classList[1]; 
-        });
-    });
-}
-
-
-function changeTheme(themeName) {
-    
-    document.body.classList.remove('theme-blue', 'theme-green', 'theme-yellow', 'theme-pink', 'theme-red', 'theme-purple');
-    
-    
-    document.body.classList.add(`theme-${themeName}`);
-    
-    
-    localStorage.setItem('pokemonSiteTheme', themeName);
-    
-    
-    const colorOptions = document.querySelectorAll('.color-option');
-    colorOptions.forEach(option => {
-        option.style.border = '3px solid transparent';
-    });
-    
-    const selectedOption = document.querySelector(`.color-option.${themeName}`);
-    if (selectedOption) {
-        selectedOption.style.border = '3px solid #333';
-    }
-}
-
-
-function applyTheme(themeName) {
-    document.body.classList.add(`theme-${themeName}`);
-    
-    
-    const selectedOption = document.querySelector(`.color-option.${themeName}`);
-    if (selectedOption) {
-        selectedOption.style.border = '3px solid #333';
-    }
-}
-
-
-function setupFAQToggle() {
-    
-}
-
-
-function animateVoteSubmission() {
-    const voteBtn = document.querySelector('.vote-btn');
-    if (voteBtn) {
-        voteBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            voteBtn.style.transform = 'scale(1)';
-        }, 150);
-    }
-}
-
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const pokemonImages = document.querySelectorAll('.pokemon-image');
-    pokemonImages.forEach(img => {
+    ia();
+    const pi = document.querySelectorAll('.pokemon-image');
+    pi.forEach(img => {
         img.addEventListener('load', function() {
             this.style.opacity = '1';
         });
     });
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const t = document.querySelector(this.getAttribute('href'));
+            if (t) {
+                t.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
+
+function ia() {
+    const cp = window.location.pathname;
+    if (cp.includes('index.html') || cp === '/') {
+        pp();
+        pv();
+        sv();
+    }
+    if (cp.includes('about.html')) {
+        sf();
+        st();
+    }
+    const th = localStorage.getItem('pokemonSiteTheme') || 'blue';
+    at(th);
+}
+
+function pp() {
+    const pg = document.getElementById('pokemonGrid');
+    if (!pg) return;
+    pg.innerHTML = '';
+    pd.forEach(pk => {
+        const pc = document.createElement('div');
+        pc.className = 'pokemon-card';
+        pc.innerHTML = `
+            <img src="${pk.image}" alt="${pk.name}" class="pokemon-image" loading="lazy">
+            <h3 class="pokemon-name">${pk.name}</h3>
+            <div class="pokemon-info">
+                <div class="pokemon-type">Type: ${pk.type}</div>
+                <div class="pokemon-description">${pk.description}</div>
+            </div>
+        `;
+        pg.appendChild(pc);
+    });
+}
+
+function pv() {
+    const ps = document.getElementById('pokemonSelect');
+    if (!ps) return;
+    pd.forEach(pk => {
+        const op = document.createElement('option');
+        op.value = pk.name;
+        op.textContent = pk.name;
+        ps.appendChild(op);
+    });
+}
+
+function sv() {
+    const vf = document.getElementById('voteForm');
+    if (!vf) return;
+    vf.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const sp = document.getElementById('pokemonSelect').value;
+        const vr = document.getElementById('voteReason').value;
+        if (!sp) {
+            alert('Please select a Pokemon!');
+            return;
+        }
+        if (!vr.trim()) {
+            alert('Please tell us why you love this Pokemon!');
+            return;
+        }
+        alert(`Thank you for voting for ${sp}! Your reason: "${vr}"`);
+        vf.reset();
+    });
+}
+
+function tf(i) {
+    const fi = document.querySelectorAll('.faq-item');
+    const ci = fi[i];
+    fi.forEach((el, j) => {
+        if (j !== i) {
+            el.classList.remove('active');
+        }
+    });
+    ci.classList.toggle('active');
+}
+
+function st() {
+    const co = document.querySelectorAll('.color-option');
+    co.forEach(opt => {
+        opt.addEventListener('click', function() {
+            const th = this.classList[1];
+            ct(th);
+        });
+    });
+}
+
+function ct(tn) {
+    document.body.classList.remove('theme-blue', 'theme-green', 'theme-yellow', 'theme-pink', 'theme-red', 'theme-purple');
+    document.body.classList.add(`theme-${tn}`);
+    localStorage.setItem('pokemonSiteTheme', tn);
+    const co = document.querySelectorAll('.color-option');
+    co.forEach(opt => {
+        opt.style.border = '3px solid transparent';
+    });
+    const so = document.querySelector(`.color-option.${tn}`);
+    if (so) {
+        so.style.border = '3px solid #333';
+    }
+}
+
+function at(tn) {
+    document.body.classList.add(`theme-${tn}`);
+    const so = document.querySelector(`.color-option.${tn}`);
+    if (so) {
+        so.style.border = '3px solid #333';
+    }
+}
+
+function sf() {}
+
+function av() {
+    const vb = document.querySelector('.vote-btn');
+    if (vb) {
+        vb.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            vb.style.transform = 'scale(1)';
+        }, 150);
+    }
+}
