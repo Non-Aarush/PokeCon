@@ -36,8 +36,6 @@ const pd = [
     { name: "Chandelure", type: "Ghost/Fire", description: "A luring Pokemon that burns spirits with its flames.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/609.png" },
 
     { name: "Greninja", type: "Water/Dark", description: "A ninja Pokemon that moves with ninja-like grace.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png" },
-    { name: "Talonflame", type: "Fire/Flying", description: "A scorching Pokemon with incredible flight speed.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/663.png" },
-    { name: "Chesnaught", type: "Grass/Fighting", description: "A spiny armor Pokemon that protects friends.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/652.png" },
     { name: "Xerneas", type: "Fairy", description: "A life Pokemon that can grant eternal life.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/716.png" },
     { name: "Yveltal", type: "Dark/Flying", description: "A destruction Pokemon that absorbs life energy.", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/717.png" },
     
