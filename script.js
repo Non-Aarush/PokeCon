@@ -54,7 +54,15 @@ const pd = [
 
 document.addEventListener('DOMContentLoaded', function() 
 {
-    ia();
+    // Add a small delay to ensure everything is fully ready
+    setTimeout(() => {
+        ia();
+        setupImageLoading();
+        setupSmoothScrolling();
+    }, 100);
+});
+
+function setupImageLoading() {
     const pi = document.querySelectorAll('.pokemon-image');
     pi.forEach(img => 
         {
@@ -63,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function()
             this.style.opacity = '1';
         });
     });
+}
+
+function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(a => 
         {
         a.addEventListener('click', function(e) 
@@ -78,30 +89,58 @@ document.addEventListener('DOMContentLoaded', function()
             }
         });
     });
-});
+}
 
 function ia() 
 {
     const cp = window.location.pathname;
-    if (cp.includes('index.html') || cp === '/') 
+    const fn = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // More robust check for home page - this handles GitHub Pages paths better
+    if (fn === 'index.html' || fn === '' || cp === '/' || cp.endsWith('/')) 
         {
-        pp();
-        pv();
-        sv();
+        initializeHomePage();
     }
-    if (cp.includes('about.html')) 
+    if (fn === 'about.html' || cp.includes('about.html')) 
         {
-        sf();
-        st();
+        initializeAboutPage();
     }
+    
     const th = localStorage.getItem('pokemonSiteTheme') || 'blue';
     at(th);
+}
+
+function initializeHomePage() {
+    // Ensure DOM elements exist before initializing
+    const pokemonGrid = document.getElementById('pokemonGrid');
+    const pokemonSelect = document.getElementById('pokemonSelect');
+    const voteForm = document.getElementById('voteForm');
+    
+    if (pokemonGrid) {
+        pp();
+    }
+    if (pokemonSelect) {
+        pv();
+    }
+    if (voteForm) {
+        sv();
+    }
+}
+
+function initializeAboutPage() {
+    sf();
+    st();
 }
 
 function pp() 
 {
     const pg = document.getElementById('pokemonGrid');
-    if (!pg) return;
+    if (!pg) {
+        console.log('Pokemon grid not found, retrying...');
+        setTimeout(pp, 200);
+        return;
+    }
+    
     pg.innerHTML = '';
     pd.forEach(pk => {
         const pc = document.createElement('div');
@@ -116,12 +155,23 @@ function pp()
         `;
         pg.appendChild(pc);
     });
+    
+    // Re-setup image loading for newly created images
+    setupImageLoading();
 }
 
 function pv() 
 {
     const ps = document.getElementById('pokemonSelect');
-    if (!ps) return;
+    if (!ps) {
+        console.log('Pokemon select not found, retrying...');
+        setTimeout(pv, 200);
+        return;
+    }
+    
+    // Clear existing options first
+    ps.innerHTML = '<option value="">Pick your fav blud</option>';
+    
     pd.forEach(pk => 
         {
         const op = document.createElement('option');
@@ -134,7 +184,12 @@ function pv()
 function sv() 
 {
     const vf = document.getElementById('voteForm');
-    if (!vf) return;
+    if (!vf) {
+        console.log('Vote form not found, retrying...');
+        setTimeout(sv, 200);
+        return;
+    }
+    
     vf.addEventListener('submit', function(e) 
     {
         e.preventDefault();
